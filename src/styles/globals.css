@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 33% 98%;
+    --foreground: 222 47% 8%;
+
+    --card: 220 33% 98%;
+    --card-foreground: 222 47% 8%;
+
+    --popover: 220 33% 98%;
+    --popover-foreground: 222 47% 8%;
+
+    --primary: 213 94% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 215 25% 92%;
+    --secondary-foreground: 222 47% 12%;
+
+    --muted: 215 25% 93%;
+    --muted-foreground: 215 16% 45%;
+
+    --accent: 213 94% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 88%;
+    --input: 215 20% 88%;
+    --ring: 213 94% 45%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222 47% 5%;
+    --foreground: 215 25% 95%;
+
+    --card: 222 40% 8%;
+    --card-foreground: 215 25% 95%;
+
+    --popover: 222 40% 8%;
+    --popover-foreground: 215 25% 95%;
+
+    --primary: 213 94% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 222 30% 14%;
+    --secondary-foreground: 215 25% 90%;
+
+    --muted: 222 30% 12%;
+    --muted-foreground: 215 16% 55%;
+
+    --accent: 213 94% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 18%;
+    --ring: 213 94% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  h1, h2, h3, h4 {
+    @apply tracking-tight;
+  }
+}
+
+/* Blueprint grid background utility */
+.blueprint-grid {
+  background-image:
+    linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.blueprint-grid-dark {
+  background-image:
+    linear-gradient(hsl(213 94% 52% / 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(213 94% 52% / 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
