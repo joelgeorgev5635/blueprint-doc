@@ -157,12 +157,12 @@ const HeroHeader = () => {
               </button>
 
               <div className="hidden lg:block">
-                <ul className="flex gap-8 text-sm">
+                <ul className="flex gap-2 text-sm">
                   {menuItems.map((item) => (
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="text-muted-foreground hover:text-foreground block transition-colors duration-150">
+                        className="block rounded-full border border-border px-4 py-1.5 text-sm text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground">
                         {item.name}
                       </Link>
                     </li>

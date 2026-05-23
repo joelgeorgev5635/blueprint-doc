@@ -12,7 +12,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <header className="border-b border-border bg-background/80 backdrop-blur-sm">
-        <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6 lg:px-12">
+        <div className="mx-auto flex h-32 max-w-7xl items-center justify-between px-6 lg:px-12">
           <Link href="/">
             <BlueprintDocLogo size="lg" />
           </Link>
@@ -85,7 +85,7 @@ export default function PrivacyPolicyPage() {
               <p className="mt-3">We use the following third-party services which may process your data:</p>
               <ul className="mt-3 space-y-2 pl-4">
                 <li className="flex gap-2"><span className="text-primary">·</span> <strong className="text-foreground">Gumroad / Stripe:</strong> payment processing</li>
-                <li className="flex gap-2"><span className="text-primary">·</span> <strong className="text-foreground">Netlify:</strong> hosting and infrastructure</li>
+                <li className="flex gap-2"><span className="text-primary">·</span> <strong className="text-foreground">Vercel:</strong> hosting and infrastructure</li>
                 <li className="flex gap-2"><span className="text-primary">·</span> <strong className="text-foreground">Email provider:</strong> transactional and marketing emails</li>
               </ul>
               <p className="mt-3">

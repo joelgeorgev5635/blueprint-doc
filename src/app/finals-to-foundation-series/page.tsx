@@ -42,14 +42,14 @@ export default function FinalsToFoundationPage() {
   return (
     <>
       <header className="border-b border-border bg-background/80 backdrop-blur-sm">
-        <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6 lg:px-12">
+        <div className="mx-auto flex h-32 max-w-7xl items-center justify-between px-6 lg:px-12">
           <Link href="/">
             <BlueprintDocLogo size="lg" />
           </Link>
-          <nav className="hidden gap-8 text-sm lg:flex">
-            <Link href="/" className="text-muted-foreground transition-colors hover:text-foreground">Home</Link>
-            <Link href="/finals-to-foundation-series" className="font-medium text-foreground">Finals to Foundation</Link>
-            <Link href="/resources" className="text-muted-foreground transition-colors hover:text-foreground">Resources</Link>
+          <nav className="hidden gap-2 text-sm lg:flex">
+            <Link href="/" className="block rounded-full border border-border px-4 py-1.5 text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground">Home</Link>
+            <Link href="/finals-to-foundation-series" className="block rounded-full border border-border bg-muted px-4 py-1.5 font-medium text-foreground transition-colors duration-150">Finals to Foundation</Link>
+            <Link href="/resources" className="block rounded-full border border-border px-4 py-1.5 text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground">Resources</Link>
           </nav>
           <Button asChild size="sm" className="rounded-full">
             <a href="https://blueprintdoc.gumroad.com/l/ovqegd" target="_blank" rel="noopener noreferrer">
