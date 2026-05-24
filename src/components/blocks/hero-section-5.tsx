@@ -132,7 +132,7 @@ const HeroHeader = () => {
     <header>
       <nav
         data-state={menuState ? 'active' : undefined}
-        className="group fixed z-20 w-full pt-2">
+        className="group w-full pt-2">
         <div
           className={cn(
             'mx-auto max-w-7xl rounded-3xl px-6 transition-all duration-300 lg:px-12',
