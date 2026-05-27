@@ -17,7 +17,7 @@ const footerLinks = {
   company: [
     { label: 'About', href: '/#about' },
     { label: 'Privacy Policy', href: '/privacy-policy' },
-    { label: 'Contact', href: 'mailto:support@blueprintdoc.co.uk', external: true },
+    { label: 'Contact', href: 'mailto:hello@blueprintdoc.co.uk', external: true },
   ],
 }
 

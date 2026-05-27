@@ -34,8 +34,8 @@ export default function PrivacyPolicyPage() {
                   blueprintdoc.co.uk
                 </a>
                 . If you have questions about this policy, contact us at{' '}
-                <a href="mailto:support@blueprintdoc.co.uk" className="text-primary hover:underline">
-                  support@blueprintdoc.co.uk
+                <a href="mailto:hello@blueprintdoc.co.uk" className="text-primary hover:underline">
+                  hello@blueprintdoc.co.uk
                 </a>
                 .
               </p>
@@ -113,8 +113,8 @@ export default function PrivacyPolicyPage() {
               </ul>
               <p className="mt-3">
                 To exercise any of these rights, email{' '}
-                <a href="mailto:support@blueprintdoc.co.uk" className="text-primary hover:underline">
-                  support@blueprintdoc.co.uk
+                <a href="mailto:hello@blueprintdoc.co.uk" className="text-primary hover:underline">
+                  hello@blueprintdoc.co.uk
                 </a>
                 . We will respond within 30 days.
               </p>
@@ -144,8 +144,8 @@ export default function PrivacyPolicyPage() {
               </p>
               <p className="mt-3">
                 Personal, non-commercial use of purchased content is permitted. If you wish to use BlueprintDoc content for educational, institutional, or commercial purposes, contact us at{' '}
-                <a href="mailto:support@blueprintdoc.co.uk" className="text-primary hover:underline">
-                  support@blueprintdoc.co.uk
+                <a href="mailto:hello@blueprintdoc.co.uk" className="text-primary hover:underline">
+                  hello@blueprintdoc.co.uk
                 </a>{' '}
                 to discuss licensing.
               </p>
@@ -158,8 +158,8 @@ export default function PrivacyPolicyPage() {
               <h2 className="text-base font-medium text-foreground">11. Contact</h2>
               <p className="mt-3">
                 For any privacy-related queries:{' '}
-                <a href="mailto:support@blueprintdoc.co.uk" className="text-primary hover:underline">
-                  support@blueprintdoc.co.uk
+                <a href="mailto:hello@blueprintdoc.co.uk" className="text-primary hover:underline">
+                  hello@blueprintdoc.co.uk
                 </a>
               </p>
             </section>
