@@ -37,7 +37,7 @@ export function HeroSection() {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
                   </span>
-                  Finals to Foundation: Core — available now
+                  Finals to Foundation: Core, available now
                 </div>
 
                 <h1 className="mt-8 max-w-2xl text-balance text-5xl font-display font-semibold tracking-tight md:text-6xl lg:mt-6 xl:text-7xl">

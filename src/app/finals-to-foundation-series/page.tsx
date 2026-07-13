@@ -1,7 +1,8 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Footer } from '@/components/layout/footer'
+import { NotifyButton } from '@/components/layout/notify-button'
 import { BlueprintDocLogo } from '@/components/layout/logo'
 import { ChevronRight, Lock, Clock, FileText } from 'lucide-react'
 
@@ -53,7 +54,7 @@ export default function FinalsToFoundationPage() {
           </nav>
           <Button asChild size="sm" className="rounded-full">
             <a href="https://blueprintdoc.gumroad.com/l/ovqegd" target="_blank" rel="noopener noreferrer">
-              Buy now — £15.20
+              Buy now: £15.20
             </a>
           </Button>
         </div>
@@ -71,7 +72,7 @@ export default function FinalsToFoundationPage() {
                 Practical guides for your pathway from medical school to the NHS
               </h1>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                Written with reference to current UK clinical guidelines. Practical and direct — at the level of a capable FY1, not a consultant.
+                Written with reference to current UK clinical guidelines. Practical and direct - at the level of a capable FY1, not a consultant.
               </p>
             </div>
           </div>
@@ -89,7 +90,7 @@ export default function FinalsToFoundationPage() {
                   Finals to Foundation: Core
                 </h2>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  The 30-page survival guide for starting FY1. Everything the lecture hall forgot — written by a doctor who remembers what day one felt like.
+                  The 30-page survival guide for starting FY1. Everything the lecture hall forgot - written by a doctor who remembers what day one felt like.
                 </p>
 
                 <div className="mt-6 flex items-center gap-4 text-sm text-muted-foreground">
@@ -147,7 +148,7 @@ export default function FinalsToFoundationPage() {
                   </div>
                   <div className="space-y-4 p-6">
                     <div className="rounded-lg border border-destructive/20 bg-destructive/5 p-3">
-                      <p className="text-xs font-medium text-destructive">Red flag — escalate immediately</p>
+                      <p className="text-xs font-medium text-destructive">Red flag - escalate immediately</p>
                       <p className="mt-1 text-sm text-muted-foreground">NEWS2 ≥7, or any single parameter score of 3</p>
                     </div>
                     <div className="rounded-lg border border-border bg-card p-3">
@@ -158,10 +159,10 @@ export default function FinalsToFoundationPage() {
                     <div className="rounded-lg border border-border bg-card p-3">
                       <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">SBAR</p>
                       <div className="mt-2 space-y-1 text-xs text-muted-foreground">
-                        <p><span className="font-medium text-foreground">S</span>ituation — what is happening now</p>
-                        <p><span className="font-medium text-foreground">B</span>ackground — relevant clinical history</p>
-                        <p><span className="font-medium text-foreground">A</span>ssessment — what you think is wrong</p>
-                        <p><span className="font-medium text-foreground">R</span>ecommendation — what you need</p>
+                        <p><span className="font-medium text-foreground">S</span>ituation - what is happening now</p>
+                        <p><span className="font-medium text-foreground">B</span>ackground - relevant clinical history</p>
+                        <p><span className="font-medium text-foreground">A</span>ssessment - what you think is wrong</p>
+                        <p><span className="font-medium text-foreground">R</span>ecommendation - what you need</p>
                       </div>
                     </div>
                     <div className="rounded-lg border border-border bg-card p-3">
@@ -203,16 +204,7 @@ export default function FinalsToFoundationPage() {
             <div className="mt-12 rounded-xl border border-border bg-background p-8 text-center">
               <h3 className="text-base font-medium">Get notified when specialty guides launch</h3>
               <p className="mt-2 text-sm text-muted-foreground">Subscribe for early access and exclusive offers.</p>
-              <form className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="h-10 w-full max-w-xs rounded-full border border-border bg-background px-4 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring sm:w-auto"
-                />
-                <Button type="submit" className="w-full rounded-full sm:w-auto">
-                  Notify me
-                </Button>
-              </form>
+              <NotifyButton />
             </div>
           </div>
         </section>

@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Footer } from '@/components/layout/footer'
 import { BlueprintDocLogo } from '@/components/layout/logo'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: 'BlueprintDoc privacy policy — how we collect, use, and protect your data.',
+  description: 'BlueprintDoc privacy policy - how we collect, use, and protect your data.',
 }
 
 export default function PrivacyPolicyPage() {
@@ -47,8 +47,8 @@ export default function PrivacyPolicyPage() {
               <ul className="mt-3 space-y-2 pl-4">
                 <li className="flex gap-2"><span className="text-primary">·</span> Email address (when you subscribe or make a purchase)</li>
                 <li className="flex gap-2"><span className="text-primary">·</span> Name (when you purchase a product)</li>
-                <li className="flex gap-2"><span className="text-primary">·</span> Payment information (processed securely by Stripe — we do not store card details)</li>
-                <li className="flex gap-2"><span className="text-primary">·</span> Usage data (pages visited, time spent — via analytics)</li>
+                <li className="flex gap-2"><span className="text-primary">·</span> Payment information (processed securely by Stripe - we do not store card details)</li>
+                <li className="flex gap-2"><span className="text-primary">·</span> Usage data (pages visited, time spent - via analytics)</li>
                 <li className="flex gap-2"><span className="text-primary">·</span> Device and browser information</li>
               </ul>
             </section>
@@ -137,10 +137,10 @@ export default function PrivacyPolicyPage() {
             <section>
               <h2 className="text-base font-medium text-foreground">10. Intellectual Property and Copyright</h2>
               <p className="mt-3">
-                All content on this website and within BlueprintDoc products — including but not limited to written guides, clinical frameworks, decision trees, reference materials, and design — is the intellectual property of BlueprintDoc Ltd and is protected by UK copyright law.
+                All content on this website and within BlueprintDoc products - including but not limited to written guides, clinical frameworks, decision trees, reference materials, and design - is the intellectual property of BlueprintDoc Ltd and is protected by UK copyright law.
               </p>
               <p className="mt-3">
-                You may not reproduce, redistribute, resell, or republish any BlueprintDoc content in any form — in whole or in part — without prior written permission from BlueprintDoc Ltd. This includes sharing purchased PDF guides with third parties or uploading them to any platform, website, or file-sharing service.
+                You may not reproduce, redistribute, resell, or republish any BlueprintDoc content in any form - in whole or in part - without prior written permission from BlueprintDoc Ltd. This includes sharing purchased PDF guides with third parties or uploading them to any platform, website, or file-sharing service.
               </p>
               <p className="mt-3">
                 Personal, non-commercial use of purchased content is permitted. If you wish to use BlueprintDoc content for educational, institutional, or commercial purposes, contact us at{' '}

@@ -89,6 +89,62 @@
   background-size: 32px 32px;
 }
 
+/* Zoho Campaigns popup overrides */
+#zc_signUpFormWrapper *,
+[id*="ZC"] *,
+[class*="zc-"] * {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  letter-spacing: -0.01em !important;
+}
+#zc_signUpFormWrapper h1,
+#zc_signUpFormWrapper h2,
+#zc_signUpFormWrapper h3,
+#zc_signUpFormWrapper p,
+#zc_signUpFormWrapper span,
+#zc_signUpFormWrapper div,
+[id*="ZC"] h1,
+[id*="ZC"] h2,
+[id*="ZC"] h3,
+[id*="ZC"] p,
+[id*="ZC"] span,
+[id*="ZC"] div {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+  color: hsl(222 47% 8%) !important;
+}
+#zc_signUpFormWrapper input[type="email"],
+#zc_signUpFormWrapper input[type="text"],
+[id*="ZC"] input[type="email"],
+[id*="ZC"] input[type="text"] {
+  border-radius: 999px !important;
+  border: 1px solid hsl(215 20% 88%) !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 14px !important;
+  padding: 10px 16px !important;
+  color: hsl(222 47% 8%) !important;
+}
+#zc_signUpFormWrapper input[type="submit"],
+#zc_signUpFormWrapper button[type="submit"],
+[id*="ZC"] input[type="submit"],
+[id*="ZC"] button[type="submit"],
+[id*="ZC"] [class*="btn"],
+[id*="ZC"] [class*="button"] {
+  background: hsl(213 94% 45%) !important;
+  background-image: none !important;
+  border-radius: 999px !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
+  border: none !important;
+  cursor: pointer !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  padding: 10px 28px !important;
+  box-shadow: none !important;
+}
+
 .blueprint-grid-dark {
   background-image:
     linear-gradient(hsl(213 94% 52% / 0.08) 1px, transparent 1px),

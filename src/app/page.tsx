@@ -1,17 +1,17 @@
-import { HeroSection } from '@/components/blocks/hero-section-5'
+﻿import { HeroSection } from '@/components/blocks/hero-section-5'
 import { Footer } from '@/components/layout/footer'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
-import { ChevronRight, BookOpen, Stethoscope, ClipboardList, ShieldCheck } from 'lucide-react'
+import { ChevronRight, BookOpen, Stethoscope, ClipboardList, ShieldCheck, Instagram } from 'lucide-react'
 
 const features = [
   {
     icon: BookOpen,
     title: 'FY1 Survival Guides',
     description:
-      "Everything you need before your first ward round. Prescribing, escalation, clerking, handover — written by doctors who've been there.",
+      "Everything you need before your first ward round. Prescribing, escalation, clerking, handover. Written by doctors who've been there.",
   },
   {
     icon: Stethoscope,
@@ -23,7 +23,7 @@ const features = [
     icon: ClipboardList,
     title: 'Clinical Frameworks',
     description:
-      'Decision trees, SBAR templates, NEWS2 guides, CURB-65, and escalation frameworks — structured thinking under pressure.',
+      'Decision trees, SBAR templates, NEWS2 guides, CURB-65, and escalation frameworks. Structured thinking under pressure.',
   },
   {
     icon: ShieldCheck,
@@ -110,13 +110,13 @@ export default function HomePage() {
                 Finals to Foundation: Core
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                The 30-page survival guide for starting FY1. Everything the lecture hall forgot to teach you — written at the level of a capable FY1, not a consultant.
+                The 30-page survival guide for starting FY1. Everything the lecture hall forgot to teach you, written at the level of a capable FY1, not a consultant.
               </p>
 
               <ul className="mt-8 space-y-3">
                 {[
                   'Reading guidelines (NICE, SIGN navigation)',
-                  'Prescribing safely — avoiding the common FY1 errors',
+                  'Prescribing safely: avoiding the common FY1 errors',
                   'Escalating correctly with confident communication',
                   'Clerking efficiently: speed and structure',
                   'Handover that actually protects patient safety',
@@ -156,7 +156,7 @@ export default function HomePage() {
                 <div className="rounded-lg border border-primary/20 bg-primary/5 p-4">
                   <p className="text-xs font-medium text-primary">Red flag</p>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Paracetamol <span className="font-mono">1g QDS</span>, max <span className="font-mono">4g/24h</span> — reduce to <span className="font-mono">500mg QDS</span> if &lt;50kg
+                    Paracetamol <span className="font-mono">1g QDS</span>, max <span className="font-mono">4g/24h</span>. Reduce to <span className="font-mono">500mg QDS</span> if &lt;50kg
                   </p>
                 </div>
                 <div className="rounded-lg border border-border bg-card p-4">
@@ -216,11 +216,20 @@ export default function HomePage() {
                 Bridging the gap between the lecture hall and the ward
               </h2>
               <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                We built BlueprintDoc because we remembered what starting as an FY1 actually felt like — the gap between what medical school teaches and what the ward demands on day one. That gap is real, it is wide, and most people only discover it when they're already on shift.
+                We built BlueprintDoc because we remembered what starting as an FY1 actually felt like: the gap between what medical school teaches and what the ward demands on day one. That gap is real, it is wide, and most people only discover it when they're already on shift.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Our guides are written by doctors who have completed foundation training successfully and want to pass on the things that actually helped — not the things that look good in a curriculum document.
+                Our guides are written by doctors who have completed foundation training successfully and want to pass on the things that actually helped, not the things that look good in a curriculum document.
               </p>
+              <a
+                href="https://www.instagram.com/blueprint_doc/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
+              >
+                <Instagram className="h-4 w-4" />
+                @blueprint_doc
+              </a>
             </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {[
@@ -230,7 +239,7 @@ export default function HomePage() {
                 },
                 {
                   title: 'Grounded in experience',
-                  body: 'Carefully curated lessons from real ward situations — not textbook scenarios. The pearls a consultant carries in their head, made accessible.',
+                  body: 'Carefully curated lessons from real ward situations, not textbook scenarios. The pearls a consultant carries in their head, made accessible.',
                 },
                 {
                   title: 'Built for the transition',
@@ -238,7 +247,7 @@ export default function HomePage() {
                 },
                 {
                   title: 'For our colleagues',
-                  body: 'We are genuinely invested in helping the next generation of junior doctors start their careers with more confidence and less overwhelm.',
+                  body: 'We are genuinely invested in helping the next generation of resident doctors start their careers with more confidence and less overwhelm.',
                 },
               ].map((item) => (
                 <div key={item.title} className="rounded-xl border border-border bg-muted/30 p-5">

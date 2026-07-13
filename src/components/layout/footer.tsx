@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Instagram } from 'lucide-react'
 import { BlueprintDocLogo } from '@/components/layout/logo'
 
 const footerLinks = {
@@ -34,6 +35,15 @@ export function Footer() {
             <p className="mt-4 text-xs text-muted-foreground">
               For education only. Always follow your trust protocols.
             </p>
+            <a
+              href="https://www.instagram.com/blueprint_doc/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
+            >
+              <Instagram className="h-4 w-4" />
+              @blueprint_doc
+            </a>
           </div>
 
           <div>

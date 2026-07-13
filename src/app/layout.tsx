@@ -1,5 +1,7 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { Inter, Fraunces, JetBrains_Mono } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
+import { ZohoPopup } from '@/components/layout/zoho-popup'
 import '@/styles/globals.css'
 
 const inter = Inter({
@@ -23,14 +25,14 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'BlueprintDoc — Medical Education for Junior Doctors',
+    default: 'BlueprintDoc: Medical Education for Resident Doctors',
     template: '%s | BlueprintDoc',
   },
   description:
     'Practical guides for final-year medical students and FY1 doctors. Survive and thrive on the NHS ward from day one.',
-  keywords: ['FY1', 'junior doctor', 'medical education', 'NHS', 'foundation year', 'medical school'],
+  keywords: ['FY1', 'resident doctor', 'medical education', 'NHS', 'foundation year', 'medical school'],
   openGraph: {
-    title: 'BlueprintDoc — Medical Education for Junior Doctors',
+    title: 'BlueprintDoc: Medical Education for Resident Doctors',
     description:
       'Practical guides for final-year medical students and FY1 doctors. Survive and thrive on the NHS ward from day one.',
     url: 'https://blueprintdoc.co.uk',
@@ -53,6 +55,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         {children}
+        <Analytics />
+        <ZohoPopup />
       </body>
     </html>
   )

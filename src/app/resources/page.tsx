@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Footer } from '@/components/layout/footer'
 import { BlueprintDocLogo } from '@/components/layout/logo'
@@ -7,7 +7,7 @@ import { ExternalLink } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Clinical Resources',
-  description: 'Curated reference links for FY1 doctors — NICE CKS, BNF, MDCalc, Resus UK, and more.',
+  description: 'Curated reference links for FY1 doctors - NICE CKS, BNF, MDCalc, Resus UK, and more.',
 }
 
 const resources = [
@@ -16,7 +16,7 @@ const resources = [
     items: [
       {
         name: 'NICE CKS',
-        description: 'Clinical Knowledge Summaries — concise, evidence-based guidance for primary and secondary care.',
+        description: 'Clinical Knowledge Summaries - concise, evidence-based guidance for primary and secondary care.',
         href: 'https://cks.nice.org.uk',
         tag: 'Guidelines',
       },
@@ -28,7 +28,7 @@ const resources = [
       },
       {
         name: 'SIGN Guidelines',
-        description: 'Scottish Intercollegiate Guidelines Network — evidence-based clinical practice guidelines.',
+        description: 'Scottish Intercollegiate Guidelines Network - evidence-based clinical practice guidelines.',
         href: 'https://www.sign.ac.uk',
         tag: 'Guidelines',
       },
@@ -39,13 +39,13 @@ const resources = [
     items: [
       {
         name: 'BNF Online',
-        description: 'British National Formulary — drug doses, interactions, contraindications, and monitoring.',
+        description: 'British National Formulary - drug doses, interactions, contraindications, and monitoring.',
         href: 'https://bnf.nice.org.uk',
         tag: 'Prescribing',
       },
       {
         name: 'BNFc Online',
-        description: 'British National Formulary for Children — paediatric doses and guidance.',
+        description: 'British National Formulary for Children - paediatric doses and guidance.',
         href: 'https://bnfc.nice.org.uk',
         tag: 'Prescribing',
       },
@@ -56,7 +56,7 @@ const resources = [
     items: [
       {
         name: 'MDCalc',
-        description: 'Medical calculators and decision tools — NEWS2, CURB-65, Wells scores, and hundreds more.',
+        description: 'Medical calculators and decision tools - NEWS2, CURB-65, Wells scores, and hundreds more.',
         href: 'https://www.mdcalc.com',
         tag: 'Calculators',
       },
@@ -90,7 +90,7 @@ const resources = [
     items: [
       {
         name: 'Accurx',
-        description: 'NHS-wide clinical communication platform — message patients, request documents, and coordinate care directly from your desktop.',
+        description: 'NHS-wide clinical communication platform - message patients, request documents, and coordinate care directly from your desktop.',
         href: 'https://www.accurx.com',
         tag: 'NHS Tool',
       },
@@ -101,7 +101,7 @@ const resources = [
     items: [
       {
         name: 'GMC Good Medical Practice',
-        description: 'Core professional standards for doctors in the UK — duties, ethics, and responsibilities.',
+        description: 'Core professional standards for doctors in the UK - duties, ethics, and responsibilities.',
         href: 'https://www.gmc-uk.org/professional-standards/good-medical-practice',
         tag: 'Professional',
       },
@@ -139,7 +139,7 @@ export default function ResourcesPage() {
           <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Reference Links</p>
           <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight">Clinical Resources</h1>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            Curated links to the reference tools used daily on the ward. All external — opens in a new tab.
+            Curated links to the reference tools used daily on the ward. All external - opens in a new tab.
           </p>
 
           <div className="mt-12 space-y-12">
