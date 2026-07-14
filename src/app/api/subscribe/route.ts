@@ -6,9 +6,21 @@ const schema = z.object({
   email: z.string().email(),
 })
 
-// These are public embed keys — already present in the client-side Zoho JS
-const ZOHO_LIST_KEY = '3z834b858570054b8a30ab29dd9462a6d8'
-const ZOHO_FORM_KEY = '3z9ba00add35d13b43926cf4d828f82193fd0672a7ccfa2fdd9558dd7645b5f715'
+async function getAccessToken(): Promise<string> {
+  const res = await fetch('https://accounts.zoho.eu/oauth/v2/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      refresh_token: process.env.ZOHO_REFRESH_TOKEN!,
+      client_id: process.env.ZOHO_CLIENT_ID!,
+      client_secret: process.env.ZOHO_CLIENT_SECRET!,
+      grant_type: 'refresh_token',
+    }).toString(),
+  })
+  const data = (await res.json()) as { access_token?: string; error?: string }
+  if (!data.access_token) throw new Error(`Zoho token error: ${data.error}`)
+  return data.access_token
+}
 
 export async function POST(request: Request) {
   let body: unknown
@@ -25,39 +37,41 @@ export async function POST(request: Request) {
 
   const { name, email } = parsed.data
 
-  const params = new URLSearchParams({
-    zc_trackCode: 'ZCFORMVIEW',
-    submitType: 'optinCustomView',
-    lD: ZOHO_LIST_KEY,
-    emailAddr: email,
-    firstName: name ?? '',
-    zcld: ZOHO_FORM_KEY,
-    formType: 'GenericForm',
-    zx: '',
-  })
-
   try {
-    const res = await fetch('https://maillist-manage.zoho.eu/weboptin.do', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Referer': 'https://blueprintdoc.co.uk',
-        'Origin': 'https://blueprintdoc.co.uk',
-      },
-      body: params.toString(),
+    const accessToken = await getAccessToken()
+
+    const contactInfo = JSON.stringify({
+      'Contact Email': email,
+      ...(name ? { 'First Name': name } : {}),
     })
 
-    const text = await res.text()
+    const params = new URLSearchParams({
+      resfmt: 'JSON',
+      listkey: '3z834b858570054b8a30ab29dd9462a6d8',
+      contactinfo: contactInfo,
+    })
 
-    // Zoho returns a redirect or success HTML — treat any non-server-error as success
-    if (res.status < 500) {
+    const res = await fetch(
+      `https://campaigns.zoho.eu/api/v1.1/json/listsubscribe?${params.toString()}`,
+      {
+        method: 'POST',
+        headers: { Authorization: `Zoho-oauthtoken ${accessToken}` },
+      }
+    )
+
+    const data = (await res.json()) as { status?: string; message?: string }
+
+    if (
+      data.status === 'success' ||
+      data.message?.toLowerCase().includes('already')
+    ) {
       return NextResponse.json({ success: true })
     }
 
-    console.error('[subscribe] Zoho error:', res.status, text.slice(0, 200))
+    console.error('[subscribe] Zoho error response:', data)
     return NextResponse.json({ error: 'Subscription failed' }, { status: 502 })
   } catch (err) {
-    console.error('[subscribe] Failed to reach Zoho:', err)
-    return NextResponse.json({ error: 'Failed to reach email provider' }, { status: 502 })
+    console.error('[subscribe] Error:', err)
+    return NextResponse.json({ error: 'Failed to subscribe' }, { status: 502 })
   }
 }
