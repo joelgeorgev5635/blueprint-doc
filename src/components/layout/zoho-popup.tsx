@@ -1,86 +1,39 @@
 'use client'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { X } from 'lucide-react'
 
 export function ZohoPopup() {
   const [open, setOpen] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const zohoReady = useRef(false)
 
   useEffect(() => {
     const openPopup = () => setOpen(true)
     window.addEventListener('open-email-popup', openPopup)
-
-    // Timer fires independently — Zoho loading never blocks it
     const timer = setTimeout(() => setOpen(true), 3000)
-
-    // Zoho loaded in background; wrapped so Edge tracking-protection errors can't crash the component
-    let iframe: HTMLIFrameElement | null = null
-    let script: HTMLScriptElement | null = null
-    try {
-      iframe = document.createElement('iframe')
-      iframe.name = 'zoho-sink'
-      iframe.style.display = 'none'
-      document.body.appendChild(iframe)
-
-      script = document.createElement('script')
-      script.src = 'https://campaigns.zoho.eu/js/optin.min.js'
-      script.onerror = () => { /* Zoho blocked — popup still works, emails won't sync */ }
-      script.onload = () => {
-        try {
-          if (typeof (window as any).loadZCPopup === 'function') {
-            ;(window as any).loadZCPopup(
-              '3z9ba00add35d13b43926cf4d828f82193fd0672a7ccfa2fdd9558dd7645b5f715',
-              'ZCFORMVIEW',
-              '3z834b858570054b8a30ab29dd9462a6d8'
-            )
-          }
-          setTimeout(() => {
-            try {
-              document.querySelectorAll<HTMLElement>(
-                '#zc_signUpFormWrapper, [id*="ZCPopup"], [id*="zcPopup"], [id*="ZC_POPUP"]'
-              ).forEach((el) => {
-                const overlay = el.closest<HTMLElement>('[style*="position: fixed"], [style*="position:fixed"]')
-                if (overlay) overlay.style.setProperty('display', 'none', 'important')
-                el.style.setProperty('display', 'none', 'important')
-              })
-              document.querySelectorAll<HTMLFormElement>('#zc_signUpFormWrapper form, [id*="ZC"] form').forEach((f) => {
-                f.target = 'zoho-sink'
-              })
-              zohoReady.current = true
-            } catch (_) {}
-          }, 400)
-        } catch (_) {}
-      }
-      document.body.appendChild(script)
-    } catch (_) {}
-
     return () => {
       clearTimeout(timer)
       window.removeEventListener('open-email-popup', openPopup)
-      try { script?.remove() } catch (_) {}
-      try { iframe?.remove() } catch (_) {}
     }
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Populate Zoho's hidden form and click its submit button
-    const zcForm = document.querySelector<HTMLFormElement>(
-      '#zc_signUpFormWrapper form, [id*="ZC"] form'
-    )
-    if (zcForm) {
-      const nameInput = zcForm.querySelector<HTMLInputElement>('input[type="text"]')
-      const emailInput = zcForm.querySelector<HTMLInputElement>('input[type="email"]')
-      if (nameInput) { nameInput.value = name; nameInput.dispatchEvent(new Event('input', { bubbles: true })) }
-      if (emailInput) { emailInput.value = email; emailInput.dispatchEvent(new Event('input', { bubbles: true })) }
-      const submitBtn = zcForm.querySelector<HTMLElement>('input[type="submit"], button[type="submit"]')
-      if (submitBtn) submitBtn.click()
+    setSubmitting(true)
+    try {
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email }),
+      })
+    } catch (_) {
+      // Network error — still show success, don't punish the user
     }
     setSubmitted(true)
+    setSubmitting(false)
   }
 
   if (!open) return null
@@ -145,9 +98,10 @@ export function ZohoPopup() {
               />
               <button
                 type="submit"
-                className="w-full rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                disabled={submitting}
+                className="w-full rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-60"
               >
-                Keep me posted
+                {submitting ? 'Saving…' : 'Keep me posted'}
               </button>
             </form>
 
