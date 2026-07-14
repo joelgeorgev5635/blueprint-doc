@@ -11,49 +11,58 @@ export function ZohoPopup() {
   const zohoReady = useRef(false)
 
   useEffect(() => {
-    // Hidden iframe so Zoho form submission doesn't navigate the page
-    const iframe = document.createElement('iframe')
-    iframe.name = 'zoho-sink'
-    iframe.style.display = 'none'
-    document.body.appendChild(iframe)
-
-    const script = document.createElement('script')
-    script.src = 'https://campaigns.zoho.eu/js/optin.min.js'
-    script.onload = () => {
-      if (typeof (window as any).loadZCPopup === 'function') {
-        ;(window as any).loadZCPopup(
-          '3z9ba00add35d13b43926cf4d828f82193fd0672a7ccfa2fdd9558dd7645b5f715',
-          'ZCFORMVIEW',
-          '3z834b858570054b8a30ab29dd9462a6d8'
-        )
-      }
-      setTimeout(() => {
-        // Hide Zoho's own popup UI
-        document.querySelectorAll<HTMLElement>(
-          '#zc_signUpFormWrapper, [id*="ZCPopup"], [id*="zcPopup"], [id*="ZC_POPUP"]'
-        ).forEach((el) => {
-          const overlay = el.closest<HTMLElement>('[style*="position: fixed"], [style*="position:fixed"]')
-          if (overlay) overlay.style.setProperty('display', 'none', 'important')
-          el.style.setProperty('display', 'none', 'important')
-        })
-        // Point Zoho's form at our sink iframe to prevent page navigation
-        document.querySelectorAll<HTMLFormElement>('#zc_signUpFormWrapper form, [id*="ZC"] form').forEach((f) => {
-          f.target = 'zoho-sink'
-        })
-        zohoReady.current = true
-      }, 400)
-    }
-    document.body.appendChild(script)
-
     const openPopup = () => setOpen(true)
     window.addEventListener('open-email-popup', openPopup)
 
+    // Timer fires independently — Zoho loading never blocks it
     const timer = setTimeout(() => setOpen(true), 3000)
+
+    // Zoho loaded in background; wrapped so Edge tracking-protection errors can't crash the component
+    let iframe: HTMLIFrameElement | null = null
+    let script: HTMLScriptElement | null = null
+    try {
+      iframe = document.createElement('iframe')
+      iframe.name = 'zoho-sink'
+      iframe.style.display = 'none'
+      document.body.appendChild(iframe)
+
+      script = document.createElement('script')
+      script.src = 'https://campaigns.zoho.eu/js/optin.min.js'
+      script.onerror = () => { /* Zoho blocked — popup still works, emails won't sync */ }
+      script.onload = () => {
+        try {
+          if (typeof (window as any).loadZCPopup === 'function') {
+            ;(window as any).loadZCPopup(
+              '3z9ba00add35d13b43926cf4d828f82193fd0672a7ccfa2fdd9558dd7645b5f715',
+              'ZCFORMVIEW',
+              '3z834b858570054b8a30ab29dd9462a6d8'
+            )
+          }
+          setTimeout(() => {
+            try {
+              document.querySelectorAll<HTMLElement>(
+                '#zc_signUpFormWrapper, [id*="ZCPopup"], [id*="zcPopup"], [id*="ZC_POPUP"]'
+              ).forEach((el) => {
+                const overlay = el.closest<HTMLElement>('[style*="position: fixed"], [style*="position:fixed"]')
+                if (overlay) overlay.style.setProperty('display', 'none', 'important')
+                el.style.setProperty('display', 'none', 'important')
+              })
+              document.querySelectorAll<HTMLFormElement>('#zc_signUpFormWrapper form, [id*="ZC"] form').forEach((f) => {
+                f.target = 'zoho-sink'
+              })
+              zohoReady.current = true
+            } catch (_) {}
+          }, 400)
+        } catch (_) {}
+      }
+      document.body.appendChild(script)
+    } catch (_) {}
+
     return () => {
       clearTimeout(timer)
       window.removeEventListener('open-email-popup', openPopup)
-      script.remove()
-      iframe.remove()
+      try { script?.remove() } catch (_) {}
+      try { iframe?.remove() } catch (_) {}
     }
   }, [])
 
@@ -107,6 +116,7 @@ export function ZohoPopup() {
                 height={36}
                 className="object-contain"
                 priority
+                unoptimized
               />
             </div>
 

@@ -14,6 +14,7 @@ export function BlueprintDocLogo({ className, size = 'md' }: { className?: strin
       height={h}
       className={cn('object-contain', className)}
       priority
+      unoptimized
     />
   )
 }
