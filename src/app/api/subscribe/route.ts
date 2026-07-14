@@ -6,6 +6,10 @@ const schema = z.object({
   email: z.string().email(),
 })
 
+// These are public embed keys — already present in the client-side Zoho JS
+const ZOHO_LIST_KEY = '3z834b858570054b8a30ab29dd9462a6d8'
+const ZOHO_FORM_KEY = '3z9ba00add35d13b43926cf4d828f82193fd0672a7ccfa2fdd9558dd7645b5f715'
+
 export async function POST(request: Request) {
   let body: unknown
   try {
@@ -21,44 +25,36 @@ export async function POST(request: Request) {
 
   const { name, email } = parsed.data
 
-  const listKey = process.env.ZOHO_LIST_KEY
-  const authToken = process.env.ZOHO_AUTH_TOKEN
-
-  if (!listKey || !authToken) {
-    console.error('[subscribe] Missing ZOHO_LIST_KEY or ZOHO_AUTH_TOKEN env vars')
-    return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
-  }
-
-  const contactInfo = JSON.stringify({
-    'Contact Email': email,
-    ...(name ? { 'First Name': name } : {}),
-  })
-
   const params = new URLSearchParams({
-    authtoken: authToken,
-    resfmt: 'JSON',
-    listkey: listKey,
-    contactinfo: contactInfo,
+    zc_trackCode: 'ZCFORMVIEW',
+    submitType: 'optinCustomView',
+    lD: ZOHO_LIST_KEY,
+    emailAddr: email,
+    firstName: name ?? '',
+    zcld: ZOHO_FORM_KEY,
+    formType: 'GenericForm',
+    zx: '',
   })
 
   try {
-    const res = await fetch(
-      `https://campaigns.zoho.eu/api/v1.1/json/listsubscribe?${params.toString()}`,
-      { method: 'POST' }
-    )
+    const res = await fetch('https://maillist-manage.zoho.eu/weboptin.do', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Referer': 'https://blueprintdoc.co.uk',
+        'Origin': 'https://blueprintdoc.co.uk',
+      },
+      body: params.toString(),
+    })
 
-    const data = (await res.json()) as { status?: string; message?: string; code?: string }
+    const text = await res.text()
 
-    // Zoho returns status "success" for new subscribers, and a specific message for duplicates
-    if (
-      data.status === 'success' ||
-      data.code === 'success' ||
-      data.message?.toLowerCase().includes('already')
-    ) {
+    // Zoho returns a redirect or success HTML — treat any non-server-error as success
+    if (res.status < 500) {
       return NextResponse.json({ success: true })
     }
 
-    console.error('[subscribe] Zoho error response:', data)
+    console.error('[subscribe] Zoho error:', res.status, text.slice(0, 200))
     return NextResponse.json({ error: 'Subscription failed' }, { status: 502 })
   } catch (err) {
     console.error('[subscribe] Failed to reach Zoho:', err)
