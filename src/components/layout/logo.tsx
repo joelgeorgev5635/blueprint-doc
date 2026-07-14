@@ -12,7 +12,7 @@ export function BlueprintDocLogo({ className, size = 'md' }: { className?: strin
       alt="BlueprintDoc: Ward Ready"
       width={w}
       height={h}
-      className={cn('object-contain mix-blend-multiply', className)}
+      className={cn('object-contain', className)}
       priority
     />
   )
