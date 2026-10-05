@@ -57,6 +57,16 @@ export function HeroSection() {
                       <ChevronRight className="ml-1 h-4 w-4" />
                     </Link>
                   </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="h-12 rounded-full pl-5 pr-3 text-base">
+                    <Link href="/tools">
+                      <span className="text-nowrap">Check out our tools</span>
+                      <ChevronRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </div>
