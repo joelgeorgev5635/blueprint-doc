@@ -54,7 +54,7 @@ export default function FinalsToFoundationPage() {
           </nav>
           <Button asChild size="sm" className="rounded-full">
             <a href="https://blueprintdoc.gumroad.com/l/ovqegd" target="_blank" rel="noopener noreferrer">
-              Buy now: £15.20
+              Buy now: £4.99
             </a>
           </Button>
         </div>
@@ -124,9 +124,7 @@ export default function FinalsToFoundationPage() {
 
                 <div className="mt-8 flex items-center gap-4">
                   <div>
-                    <span className="text-3xl font-semibold">£15.20</span>
-                    <span className="ml-2 text-sm text-muted-foreground line-through">£19</span>
-                    <span className="ml-2 rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">20% off this week</span>
+                    <span className="text-3xl font-semibold">£4.99</span>
                   </div>
                 </div>
                 <Button asChild size="lg" className="mt-4 rounded-full">

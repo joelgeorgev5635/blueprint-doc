@@ -133,9 +133,7 @@ export default function HomePage() {
 
               <div className="mt-10 flex items-center gap-4">
                 <div>
-                  <span className="text-2xl font-semibold">£15.20</span>
-                  <span className="ml-2 text-sm text-muted-foreground line-through">£19</span>
-                  <span className="ml-2 rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">20% off</span>
+                  <span className="text-2xl font-semibold">£4.99</span>
                 </div>
                 <Button asChild size="lg" className="rounded-full">
                   <Link href="/finals-to-foundation-series">
