@@ -50,6 +50,7 @@ export default function FinalsToFoundationPage() {
           <nav className="hidden gap-2 text-sm lg:flex">
             <Link href="/" className="block rounded-full border border-border px-4 py-1.5 text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground">Home</Link>
             <Link href="/finals-to-foundation-series" className="block rounded-full border border-border bg-muted px-4 py-1.5 font-medium text-foreground transition-colors duration-150">Finals to Foundation</Link>
+            <Link href="/tools" className="block rounded-full border border-border px-4 py-1.5 text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground">Tools</Link>
             <Link href="/resources" className="block rounded-full border border-border px-4 py-1.5 text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground">Resources</Link>
           </nav>
           <Button asChild size="sm" className="rounded-full">

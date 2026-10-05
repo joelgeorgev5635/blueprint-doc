@@ -167,6 +167,87 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Tools */}
+      <section className="blueprint-grid border-y border-border bg-muted/30 py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
+          <div className="mb-12 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Tools</p>
+              <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                Built to use, not just read
+              </h2>
+            </div>
+            <Link href="/tools" className="flex items-center gap-1 text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground shrink-0">
+              View all tools <ChevronRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+
+          <Link
+            href="/tools"
+            className="group block overflow-hidden rounded-2xl border border-border bg-card transition-all duration-150 hover:border-primary/30 hover:shadow-md"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              <div className="p-8 lg:p-10">
+                <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                  Free to use
+                </span>
+                <div className="mt-5 flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
+                  <svg className="h-5 w-5 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="6" y="2" width="12" height="20" rx="2"/><line x1="10" y1="7" x2="14" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="14" y2="15"/>
+                  </svg>
+                </div>
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Free tool</p>
+                <h3 className="mt-2 text-lg font-semibold tracking-tight">B.R.I.E.F by BlueprintDoc</h3>
+                <p className="text-xs text-muted-foreground">Blueprint Resident Instructional Education Framework</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Every good session starts with a B.R.I.E.F. Plan and execute a peer teaching session in under 10 minutes: objectives, clinical scenario, evidence-based delivery framework, and take-home messages.
+                </p>
+                <ul className="mt-5 space-y-2">
+                  {['7 guided steps', 'Smart framework recommendation', 'Plan it and execute it'].map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <ChevronRight className="h-3.5 w-3.5 shrink-0 text-primary" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 flex items-center gap-1.5 text-sm font-medium text-primary transition-colors duration-150 group-hover:text-primary/80">
+                  Open tool
+                  <ChevronRight className="h-4 w-4 transition-transform duration-150 group-hover:translate-x-0.5" />
+                </div>
+              </div>
+
+              <div className="hidden border-l border-border bg-muted/40 p-8 lg:block">
+                <p className="mb-4 text-xs font-medium uppercase tracking-wider text-muted-foreground">Session structure · 30 min</p>
+                <div className="space-y-2">
+                  {[
+                    { label: 'Opening', time: '5 min', color: '#3B82F6' },
+                    { label: 'Case presentation', time: '8 min', color: '#8B5CF6' },
+                    { label: 'Clinical reasoning', time: '7 min', color: '#10B981' },
+                    { label: 'Teaching point', time: '5 min', color: '#F59E0B' },
+                    { label: 'Understanding check', time: '3 min', color: '#EC4899' },
+                    { label: 'Take-home', time: '2 min', color: '#6366F1' },
+                  ].map((phase) => (
+                    <div
+                      key={phase.label}
+                      className="flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3"
+                      style={{ borderLeftWidth: '3px', borderLeftColor: phase.color }}
+                    >
+                      <span
+                        className="shrink-0 rounded px-1.5 py-0.5 text-xs font-semibold"
+                        style={{ background: `${phase.color}1a`, color: phase.color }}
+                      >
+                        {phase.time}
+                      </span>
+                      <span className="text-sm text-muted-foreground">{phase.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section className="blueprint-grid bg-background py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">

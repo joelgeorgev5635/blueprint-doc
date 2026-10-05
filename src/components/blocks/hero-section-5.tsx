@@ -112,6 +112,7 @@ export function HeroSection() {
 
 const menuItems = [
   { name: 'Finals to Foundation', href: '/finals-to-foundation-series' },
+  { name: 'Tools', href: '/tools' },
   { name: 'Resources', href: '/resources' },
   { name: 'About', href: '/#about' },
 ]

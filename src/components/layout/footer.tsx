@@ -7,6 +7,7 @@ const footerLinks = {
     { label: 'Finals to Foundation', href: '/finals-to-foundation-series' },
     { label: 'Core Guide', href: '/finals-to-foundation-series#core' },
     { label: 'Specialty Guides', href: '/finals-to-foundation-series#specialty' },
+    { label: 'Tools', href: '/tools' },
     { label: 'Resources', href: '/resources' },
   ],
   references: [
